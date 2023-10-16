@@ -17,7 +17,6 @@ def _periphery_json_report_impl(ctx):
     args.add_all([
         "--skip-build",
         "--format=json",
-        "--retain-objc-accessible",
     ])
     if ctx.attr.report_exclude_globs:
         glob = "|".join(ctx.attr.report_exclude_globs)
