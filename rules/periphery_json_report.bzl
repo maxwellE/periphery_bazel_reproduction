@@ -30,7 +30,7 @@ def _periphery_json_report_impl(ctx):
         ] + periphery_file_inputs.runfiles.files.to_list(),
         arguments = [args],
         outputs = [output_file],
-        command = "{executable} scan $@ > {output_path}".format(
+        command = "{executable} scan $@ | /usr/bin/sed -e \"s@$PWD/@@g\" > {output_path}".format(
             executable = ctx.executable._periphery_tool.path,
             output_path = output_file.path,
         ),
